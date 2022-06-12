@@ -1,0 +1,79 @@
+﻿
+@using u04897294_HW03.Models
+@model List<FileModel>
+
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    .row {
+        background: #f5f5dc;
+    }
+
+    .grid {
+        grid-template-columns: 300px 1fr;
+        gap: 0em;
+        display:grid;
+    }
+
+    img {
+        width: 20em;
+        height: 16em;
+    }
+
+
+    .cards {
+        margin: auto;
+        width: 30%;
+        padding: 20px;
+        float: left;
+    }
+</style>
+
+
+<h1>These are a few of my favourite short skits/memes</h1>
+<h4> --------"Media/Videos/" folder </h4>
+<div class="container">
+    <div class="row">
+
+            @foreach (FileModel file in Model)
+            {
+        <div class="cards">
+
+            <a data-fancybox="gallery" href="/Media/Videos/@file.FileName">
+            <video style="width: 18rem; height:200px" class="card-img-top" controls><source src="/Media/Videos/@file.FileName" type="video/mp4" /></video></a>
+
+          
+
+            <h5 class="card-title"> @file.FileName</h5>
+
+            <button class="btn btn-danger">
+                @Html.ActionLink("Download", "DownloadVid",
+                 new { fileName = file.FileName })
+            </button>
+
+            <button class="btn btn-success">
+                @Html.ActionLink("DELETE", "DeleteVid",
+               new { fileName = file.FileName, filePath2 = "Videos" },
+               new { onclick = "return confirm('Are you sure you wish to delete this?');" })
+            </button>
+        </div>
+
+
+
+            }
+       </div>
+   </div>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+
+
+
+
+

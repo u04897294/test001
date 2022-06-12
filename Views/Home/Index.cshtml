@@ -1,0 +1,57 @@
+﻿
+
+<style>
+    .justified 
+    {
+        text-align: justify;
+        
+    }
+  
+</style>
+
+<h1>Wow, a whole page just about me!</h1>
+<h4> Me taking about myself, who is this man? who is this dude?</h4>
+
+<div class="jumbotron" style="background-color: #f5f5dc ;">
+    <div class="container" style="margin-top:-30px">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8  col-md-6 col-lg-6 col-xl-6">
+                <h2>Who is Paul?</h2>
+                <p class="justified" style="font-size:14px;">
+                    My name is Paul Adesola and I hope to one day use Information Tecnology to change my community and the world at large.
+                    I am in my penultimate year of studies in BCom Informatics. My hobbies aside from coding include; outdoor activities such as going on hikes,
+                    going to the gym, ice-skating. I am also an avid reader, reading for me is an escape and also a way of absorbing different ideas from different topics.
+                </p>
+            </div>
+
+
+
+            <div class="col-xs-12 col-sm-8  col-md-6 col-lg-6 col-xl-6">
+
+                <h2>Option Selection</h2>
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+
+                    <div class="form">
+                        <label for="Documents" style="font-weight:normal; margin-right:0.3rem">Documents</label> <input type="radio" name="selected" value="Documents" /> <br>
+                        <label for="Images" style="font-weight:normal; margin-right:0.3rem">Images</label><input type="radio" name="selected" value="Images" /> <br>
+                        <label for="Videos" style="font-weight: normal; margin-right: 0.3rem">Videos</label> <input type="radio" name="selected" value="Videos" /> <br><br>
+                    </div>
+
+
+                    @Html.TextBox("file", "", new { type = "file" })
+                    <input style="margin-top:0.5rem" type="submit" value="Submit"/>
+                }
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+</div>
+
+

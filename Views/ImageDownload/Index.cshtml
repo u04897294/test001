@@ -1,0 +1,81 @@
+﻿@using u04897294_HW03.Models
+@model List<FileModel>
+
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+
+     .cards {
+                margin: auto;
+                width: 30%;
+                padding: 20px;
+                float: left;
+    }
+    .row {
+        background: #f5f5dc;
+    }
+
+    .grid {
+        grid-template-columns: 300px 1fr;
+        display:grid;
+        gap: 0em;
+        @*display: inline-block;*@
+    }
+
+    img {
+        width: 20em;
+        height: 16em;
+    }
+
+
+   
+</style>
+
+
+<h1>This page holds a few images of my favourite animals and places</h1>
+<h4> --------"Media/Images/" folder is where the images are located</h4>
+<div class="container">
+    <div class="row">
+
+
+        @foreach (FileModel file in Model)
+        {
+        
+            <div class="cards">
+
+                <a data-fancybox="gallery" href="~/Media/Images/@file.FileName"> <img src="~/Media/Images/@file.FileName" class="card-img-top" alt="Pcture here" /></a>
+                @**@
+
+                <h5 class="card-title"> @file.FileName</h5>
+
+                <button class="btn btn-danger">
+                    @Html.ActionLink("Download", "DownloadImg",
+                     new { fileName = file.FileName})
+                </button>
+
+                <button class="btn btn-success">
+                    @Html.ActionLink("DELETE", "DeleteImg",
+                   new { fileName = file.FileName },
+                   new { onclick = "return confirm('Are you sure you wish to delete this?');" })
+                </button>
+            </div>
+        
+
+
+
+            }
+        </div>
+        </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+
+
+
